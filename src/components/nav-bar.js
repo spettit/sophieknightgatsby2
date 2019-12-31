@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import Link from "gatsby-link";
-import styled from "styled-components";
+import React, { Component } from "react"
+import Link from "gatsby-link"
+import styled from "styled-components"
 
 const Navstrip = styled.div`
   ${"" /* margin-bottom: 1.45rem; */} position: fixed;
@@ -12,7 +12,7 @@ const Navstrip = styled.div`
   @media (max-width: 400px) {
     margin-bottom: 0px;
   }
-`;
+`
 
 const NavContent = styled.div`
   margin: 0px auto;
@@ -25,9 +25,9 @@ const NavContent = styled.div`
     flex-direction: column;
     align-items: center;
   }
-`;
+`
 
-const NavButtons = styled.div``;
+const NavButtons = styled.div``
 
 const Title = styled.h1`
   margin: 0px;
@@ -35,7 +35,7 @@ const Title = styled.h1`
   @media (max-width: 400px) {
     font-size: 2rem;
   }
-`;
+`
 
 const LinkContainer = styled.div`
   position: relative;
@@ -46,36 +46,36 @@ const LinkContainer = styled.div`
     margin-left: 3px;
     margin-right: 3px;
   }
-`;
+`
 
 const Li = styled.li`
-&:hover {color: white;}
+  &:hover {
+    color: white;
+  }
 `
 
 class Navbar extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super()
     this.state = {
-      submenu: false
+      submenu: false,
     }
   }
-  
+
   handleClick() {
-    if(this.state.submenu) {
-      this.setState({submenu: false})
+    if (this.state.submenu) {
+      this.setState({ submenu: false })
     }
-    
   }
   render() {
-    return(
+    return (
       <Navstrip>
-    <NavContent>
-      <Link to="/" style={{ textDecoration: "none" }}>
-        <Title>Soph</Title>
-      </Link>
-      <NavButtons>
-        
-        {/* <LinkContainer>
+        <NavContent>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <Title>Soph</Title>
+          </Link>
+          <NavButtons>
+            {/* <LinkContainer>
         
           <Link
             exact
@@ -89,21 +89,20 @@ class Navbar extends Component {
             
           </Link>
         </LinkContainer> */}
-        <LinkContainer
-        onClick={this.handleClick.bind(this)}
-        onMouseEnter={() => this.setState({submenu: true})}
-        onMouseLeave={() => this.setState({submenu: false})}
-        >
-          <Link
-            to="/about"
-            style={{ textDecoration: "none", color: "lightgray" }}
-            activeStyle={{ color: "white" }}
-            
-          >
-          About
-         </Link>
-          
-            {/* <ul
+            <LinkContainer
+              onClick={this.handleClick.bind(this)}
+              onMouseEnter={() => this.setState({ submenu: true })}
+              onMouseLeave={() => this.setState({ submenu: false })}
+            >
+              <Link
+                to="/about"
+                style={{ textDecoration: "none", color: "lightgray" }}
+                activeStyle={{ color: "white" }}
+              >
+                About
+              </Link>
+
+              {/* <ul
               style={{
                 position: "absolute",
                 top: "25px",
@@ -138,20 +137,17 @@ class Navbar extends Component {
               </Link>
               <Li>In Print</Li>
             </ul> */}
-          
-            
-          
-        </LinkContainer>
-        <LinkContainer>
-          <Link
-            to="/galleries"
-            style={{ textDecoration: "none", color: "lightgray" }}
-            activeStyle={{ color: "white" }}
-          >
-            Work
-          </Link>
-        </LinkContainer>
-        {/* <LinkContainer>
+            </LinkContainer>
+            <LinkContainer>
+              <Link
+                to="/galleries"
+                style={{ textDecoration: "none", color: "lightgray" }}
+                activeStyle={{ color: "white" }}
+              >
+                Work
+              </Link>
+            </LinkContainer>
+            {/* <LinkContainer>
           <Link
             to="/exhibitions"
             style={{ textDecoration: "none", color: "lightgray" }}
@@ -160,31 +156,29 @@ class Navbar extends Component {
             Exhibitions
           </Link>
         </LinkContainer> */}
-        <LinkContainer>
-          <Link
-            to="/lessons"
-            style={{ textDecoration: "none", color: "lightgray" }}
-            activeStyle={{ color: "white" }}
-          >
-            Lessons
-          </Link>
-        </LinkContainer>
-        <LinkContainer>
-          <Link
-            to="/contact"
-            style={{ textDecoration: "none", color: "lightgray" }}
-            activeStyle={{ color: "white" }}
-          >
-            Contact
-          </Link>
-        </LinkContainer>
-      </NavButtons>
-    </NavContent>
-  </Navstrip>
+            <LinkContainer>
+              <Link
+                to="/lessons"
+                style={{ textDecoration: "none", color: "lightgray" }}
+                activeStyle={{ color: "white" }}
+              >
+                Lessons
+              </Link>
+            </LinkContainer>
+            <LinkContainer>
+              <Link
+                to="/contact"
+                style={{ textDecoration: "none", color: "lightgray" }}
+                activeStyle={{ color: "white" }}
+              >
+                Contact
+              </Link>
+            </LinkContainer>
+          </NavButtons>
+        </NavContent>
+      </Navstrip>
     )
   }
 }
 
-export default Navbar;
-
-
+export default Navbar
