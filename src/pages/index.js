@@ -20,9 +20,6 @@ const MainImage = styled.div`
 const IndexPage = (props) => (
   <Layout>
     <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
     <MainImage id="mainImage">
         <Img className="bigPic" sizes={props.data.contentfulArtist.homePageImage.sizes} />
       </MainImage>

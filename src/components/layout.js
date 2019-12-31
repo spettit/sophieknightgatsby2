@@ -1,52 +1,40 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
+import React from 'react'
+import PropTypes from 'prop-types'
+import Helmet from 'react-helmet'
+import styled from 'styled-components'
+import './layout.css'
 
-import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import NavBar from '../components/nav-bar';
 
-import Header from "./header"
-import "./layout.css"
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
+const TemplateWrapper = ({ children, data }) => (
+  <div style={{position: 'relative'}}>
+    <Helmet
+      title="Sophie Knight, Artist"
+      meta={[
+        // { name: 'viewport', content: 'width=device-width, initial-scale=1.0' },
+        { name: 'description', content: 'Sophie Knight is an artist, a watercolor painter and a teacher' },
+        { name: 'keywords', content: 'artist,watercolor,watercolour,painter,royal watercolour society' },
+        { name: 'google-site-verification', content: 'H9a951ASx4cXGPR8iGHhXqh4MkUWUvlybKxz8Qwq5HE' },
+      ]}
+    />
+    <NavBar data = {data}/>
+    <div>
+      {children}
+    </div>
+  </div>
+)
+
+TemplateWrapper.propTypes = {
+  children: PropTypes.func,
+}
+
+export default TemplateWrapper
+
+export const artistNameQuery = graphql`
+  query artistNameQuery {
+    contentfulArtist (name: {eq: "Sophie Knight"}) {
+      name
     }
-  `)
-
-  return (
-    <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0px 1.0875rem 1.45rem`,
-          paddingTop: 0,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
-    </>
-  )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
-
-export default Layout
+  }
+`
