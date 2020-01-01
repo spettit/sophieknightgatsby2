@@ -74,9 +74,9 @@ export default class ContactForm extends React.Component {
     }
   };
 
-  handleRecaptcha = value => {
-    this.setState({ "g-recaptcha-response": value });
-  }
+  // handleRecaptcha = value => {
+  //   this.setState({ "g-recaptcha-response": value });
+  // }
 
   render() {
     return (
@@ -85,11 +85,11 @@ export default class ContactForm extends React.Component {
         <h1>Contact Sophie</h1>
         <form
           name="contact"
-          method="post"
+          method="POST"
           action="/thanks/"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
-          data-netlify-recaptcha="true"
+          // data-netlify-recaptcha="true"
           onSubmit={this.handleSubmit}
         >
           <p hidden>
