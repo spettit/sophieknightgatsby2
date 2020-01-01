@@ -112,17 +112,17 @@ class Gallery extends Component {
       return (
         <Card
           key={idx}
-          onClick={() => this.handleClick(ele.image.file.url)}
+          onClick={() => this.handleClick(`https:${ele.fields.image.fields.file.url}?w=800`)}
         >
           {/* <Img sizes={ele.sizes} style={{height: '300', width: (300*ele.aspectRatio)}}/> */}
           <div style={{display: 'flex', justifyContent: 'center'}}>
-          <Pic src={ele.image.sizes.src} />
+          <Pic src={`https:${ele.fields.image.fields.file.url}?w=300`} />
           </div>
           <div style={{height: '30px', maxWidth: '300px'}}>
-          <Label>{ele.title}</Label>
-          <Label>{ele.medium}</Label>
+          <Label>{ele.fields.title}</Label>
+          <Label>{ele.fields.medium}</Label>
           <Label>
-            {ele.width ? `${ele.width}cm x ${ele.height}cm` : '-'}
+            {ele.fields.width ? `${ele.fields.width}cm x ${ele.fields.height}cm` : '-'}
           </Label>
           </div>
           
@@ -153,7 +153,7 @@ class Gallery extends Component {
         
 
         <Container style={{display: this.state.pickedWork !== "" ? "none" : "flex",}}>
-          <GalleriesContainer>{this.renderImages(works)}</GalleriesContainer>
+          <GalleriesContainer>{this.renderImages(this.state.works)}</GalleriesContainer>
         </Container>
         
         <Modal
@@ -171,7 +171,7 @@ class Gallery extends Component {
 
           
         </Modal>
-        {this.state.works.map((w, idx) => <p key={idx}>{w.fields.image.fields.file.url}</p>)}
+        {/* {this.state.works.map((w, idx) => <p key={idx}>{w.fields.image.fields.file.url}</p>)} */}
         
       </div>
       </Layout>
