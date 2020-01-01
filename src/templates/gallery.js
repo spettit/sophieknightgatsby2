@@ -87,6 +87,7 @@ class Gallery extends Component {
   constructor() {
     super();
     this.state = {
+      works: [],
       pickedWork: ""
     };
   }
@@ -98,7 +99,7 @@ class Gallery extends Component {
         'fields.galleryName' : this.props.data.contentfulGallery.galleryName
       })
       // .then(response => (JSON.parse(response.items[0].fields)))
-      .then(response => console.log(response.items))
+      .then(response => this.setState({works: response.items[0].fields.works}))
       .catch(console.error);
   }
 
@@ -134,7 +135,7 @@ class Gallery extends Component {
     const { galleryName } = this.props.data.contentfulGallery;
     const { works } = this.props.data.contentfulGallery;
 
-
+    this.state.works.map(w => console.log(w.fields.title))
 
     return (
         <Layout>
@@ -170,6 +171,7 @@ class Gallery extends Component {
 
           
         </Modal>
+        {this.state.works.map((w, idx) => <p key={idx}>{w.fields.image.fields.file.url}</p>)}
         
       </div>
       </Layout>
