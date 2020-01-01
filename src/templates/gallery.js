@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { createClient } from "contentful";
 import Img from "gatsby-image";
 import styled from "styled-components";
 import Link from "gatsby-link";
@@ -77,6 +78,11 @@ const TopDiv = styled.div`
  
 // `
 
+const client = createClient({
+  space: "y3imyxpski9z",
+  accessToken: "d83858a028c21fa9b0d315db2fd4ba26450be9b00dab36f1b29c638d5f25df3c"
+});
+
 class Gallery extends Component {
   constructor() {
     super();
@@ -85,15 +91,26 @@ class Gallery extends Component {
     };
   }
 
+  componentWillMount() {
+    client
+      .getEntries({
+        content_type: "gallery",
+        'fields.galleryName' : this.props.data.contentfulGallery.galleryName
+      })
+      // .then(response => (JSON.parse(response.items[0].fields)))
+      .then(response => console.log(response.items))
+      .catch(console.error);
+  }
+
   handleClick = pic => {
     console.log(pic);
     this.setState({ pickedWork: pic });
   };
   renderImages(works) {
-    return works.map(ele => {
+    return works.map((ele, idx) => {
       return (
         <Card
-          key={ele.image.sizes.src}
+          key={idx}
           onClick={() => this.handleClick(ele.image.file.url)}
         >
           {/* <Img sizes={ele.sizes} style={{height: '300', width: (300*ele.aspectRatio)}}/> */}
@@ -116,6 +133,9 @@ class Gallery extends Component {
   render() {
     const { galleryName } = this.props.data.contentfulGallery;
     const { works } = this.props.data.contentfulGallery;
+
+
+
     return (
         <Layout>
       <div>

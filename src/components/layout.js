@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
 import './layout.css'
@@ -25,9 +25,9 @@ const TemplateWrapper = ({ children, data }) => (
   </div>
 )
 
-TemplateWrapper.propTypes = {
-  children: PropTypes.func,
-}
+// TemplateWrapper.propTypes = {
+//   children: PropTypes.func,
+// }
 
 export default TemplateWrapper
 
