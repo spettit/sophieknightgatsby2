@@ -72,7 +72,7 @@ class Navbar extends Component {
       <Navstrip>
         <NavContent>
           <Link to="/" style={{ textDecoration: "none" }}>
-            <Title>Sophie Knight.</Title>
+            <Title>Sophie Knight</Title>
           </Link>
           <NavButtons>
             {/* <LinkContainer>
