@@ -147,6 +147,15 @@ class Navbar extends Component {
                 Work
               </Link>
             </LinkContainer>
+            <LinkContainer>
+              <Link
+                to="/archives"
+                style={{ textDecoration: "none", color: "lightgray" }}
+                activeStyle={{ color: "white" }}
+              >
+                In Print
+              </Link>
+            </LinkContainer>
             {/* <LinkContainer>
           <Link
             to="/exhibitions"

@@ -31,5 +31,32 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         return;
       })
     );
+    const archiveTemplate = path.resolve("src/templates/archive.js");
+    resolve(
+      graphql(`
+        {
+          contentfulArtist {
+            archive {
+              id
+              slug
+            }
+          }
+        }
+      `).then(result => {
+        if (result.errors) {
+          reject(result.errors);
+        }
+        result.data.contentfulArtist.archive.forEach(archive => {
+          createPage({
+            path: archive.slug,
+            component: archiveTemplate,
+            context: {
+              slug: archive.slug
+            }
+          });
+        });
+        return;
+      })
+    );
   });
 };
