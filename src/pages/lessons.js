@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Link from 'gatsby-link';
 import Layout from '../components/layout'
+import Img from "gatsby-image";
 
 const Container = styled.div`
   width: 70vw;
@@ -20,15 +21,21 @@ const LessonPage = ({data}) => {
   return(
       <Layout>
     <Container>
-      <ImageDiv>
-      <img src={data.contentfulArtist.profilePicture2.file.url} />
+      {/* <ImageDiv> */}
+      {/* <img src={data.contentfulArtist.profilePicture2.file.url} /> */}
+      <Img
+        className="profilePic"
+        sizes={data.contentfulArtist.profilePicture2.sizes}
+        style={{ maxWidth: 500, marginLeft: "auto", marginRight: "auto" }}
+      />
       {/* <div style={{width: '10px'}}></div>
       <img src={data.contentfulArtist.profilePicture3.file.url} /> */}
-      </ImageDiv>
-      
+      {/* </ImageDiv> */}
+      <div style={{height: "30px"}} />
       <div dangerouslySetInnerHTML={{ __html: data.contentfulArtist.childContentfulArtistLessonsTextNode.childMarkdownRemark.html}} />
       <Link to='/contact'>Sign up for Watercolour Lessons</Link>
     </Container>
+    <div style={{height: "100px"}} />
     </Layout>
   )
 }
@@ -45,6 +52,13 @@ query artistQuery {
         fileName
         contentType
       }
+      sizes(maxWidth: 600) {
+          base64
+          aspectRatio
+          src
+          srcSet
+          sizes
+        }
     }
     profilePicture3 {
       file {
