@@ -48,8 +48,8 @@ const Title = styled.div`
   font-size: 20px;
 `
 const Pic = styled.img`
-  height: 800px;
-  width: auto;
+  height: auto;
+  width: 100%;
   //   cursor: zoom-in;
 `
 
